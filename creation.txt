@@ -1,0 +1,37 @@
+Microsoft Windows [Version 10.0.26200.8655]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\WASIF ULLAH>git --version
+git version 2.55.0.windows.3
+
+C:\Users\WASIF ULLAH>git config --global --list
+core.editor="C:\Users\WASIF ULLAH\AppData\Local\Programs\Microsoft VS Code\bin\code" --wait
+
+C:\Users\WASIF ULLAH>git config --global user.email"techworker55@gmail.com"
+
+C:\Users\WASIF ULLAH>git config --global user.name"SafiAhmad55"
+
+C:\Users\WASIF ULLAH>git config --global --list
+core.editor="C:\Users\WASIF ULLAH\AppData\Local\Programs\Microsoft VS Code\bin\code" --wait
+
+C:\Users\WASIF ULLAH>git config --global user.name
+
+C:\Users\WASIF ULLAH>git config --global user.name"SafiAhmad55"
+
+C:\Users\WASIF ULLAH>git config --global --list
+core.editor="C:\Users\WASIF ULLAH\AppData\Local\Programs\Microsoft VS Code\bin\code" --wait
+
+C:\Users\WASIF ULLAH>git config --global user.name "SafiAhmad55"
+
+C:\Users\WASIF ULLAH>git config --global --list
+core.editor="C:\Users\WASIF ULLAH\AppData\Local\Programs\Microsoft VS Code\bin\code" --wait
+user.name=SafiAhmad55
+
+C:\Users\WASIF ULLAH>git config --global user.email "techworker55@gmail.com"
+
+C:\Users\WASIF ULLAH>git config --global --list
+core.editor="C:\Users\WASIF ULLAH\AppData\Local\Programs\Microsoft VS Code\bin\code" --wait
+user.name=SafiAhmad55
+user.email=techworker55@gmail.com
+
+C:\Users\WASIF ULLAH>
