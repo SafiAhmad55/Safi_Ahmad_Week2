@@ -1,13 +1,13 @@
-# Safi Ahmad -  Full-Stack Authentication Project
+# Safi Ahmad - Full-Stack Web Development
 
 ## Project Description
 
-A full-stack user authentication and registration system built using React,
+A full-stack authentication and user access system built using React,
 Node.js, Express.js, MongoDB Atlas, Mongoose, bcrypt, and JWT.
 
-The project includes user registration, secure password hashing, login
-authentication, JWT-based protected routes, role-based access control,
-Admin and Employee roles, and logout functionality.
+The project builds on the Week 1 registration system and adds secure
+user login, JWT authentication, protected routes, role-based access
+control, Admin and Employee roles, and logout functionality.
 
 ## Technologies Used
 
@@ -34,7 +34,7 @@ Admin and Employee roles, and logout functionality.
 ## Project Structure
 
 ```text
-Safi_Ahmad_Week1/
+Safi_Ahmad_Week2/
 │
 ├── frontend/
 │   ├── src/
@@ -44,10 +44,11 @@ Safi_Ahmad_Week1/
 ├── backend/
 │   ├── models/
 │   ├── routes/
+│   ├── middleware/
 │   ├── server.js
 │   └── ...
 │
-├── Safi_Ahmad_Week1.postman_collection.json
+├── Safi_Ahmad_Week2.postman_collection.json
 ├── .gitignore
 ├── package.json
 └── README.md
