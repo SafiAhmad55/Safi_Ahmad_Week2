@@ -1,11 +1,17 @@
 import { useState } from "react"
 function App() {
+  const [showLogin, setShowLogin] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(
+  localStorage.getItem("token") !== null)
   const [name, setName] = useState("")
   const [username, setUsername] = useState("")
   const [gender, setGender]= useState("")
   const [email ,setEmail]=useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
+
+  const [loginEmail, setLoginEmail] = useState("")
+const [loginPassword, setLoginPassword] = useState("")
 
   const handleSubmit = async (e) => {
 
@@ -83,6 +89,57 @@ function App() {
 
   }
 }
+const handleLogin = async (e) => {
+
+  e.preventDefault()
+
+  if (loginEmail === "" || loginPassword === "") {
+    alert("Enter email and password")
+    return
+  }
+
+  try {
+
+    const response = await fetch(
+      "http://localhost:5000/api/auth/login",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          email: loginEmail,
+          password: loginPassword
+        })
+      }
+    )
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      alert(data.message)
+      return
+    }
+
+    alert(data.message)
+
+    localStorage.setItem("token", data.token)
+    setIsLoggedIn(true)
+
+  } catch (error) {
+
+    alert("Could not connect to the server")
+
+  }
+}
+const handleLogout = () => {
+  localStorage.removeItem("token")
+  setIsLoggedIn(false)
+  alert("Logged out successfully")
+}
+
 
   return (
     //main page container
@@ -91,13 +148,16 @@ function App() {
     {/*grey box containing for registration form*/}
       <div className="bg-gray-100 p-10 rounded-lg shadow-md w-[550px]">
 
+
+
         {/*page heading*/}
         <h1 className="text-2xl font-bold text-center mb-6">
           Create Account
         </h1>
 
       {/*registration form*/}
-        <form onSubmit={handleSubmit}>
+        {!showLogin ? (
+          <form onSubmit={handleSubmit}>
           
          {/* name field */}
           <label className="block mb-2">
@@ -202,13 +262,86 @@ function App() {
           >
             Register
           </button>
-
+            
+ 
         </form>
+        ) : (
+  <form onSubmit={handleLogin}>    <h1 className="text-2xl font-bold text-center mb-6">
+      Login
+    </h1>
+
+    <label className="block mb-2">
+      Email
+    </label>
+
+    <input
+      type="email"
+      placeholder="enter your email"
+      value={loginEmail}
+      onChange={(e) => setLoginEmail(e.target.value)}
+      className="w-full border p-2 rounded mb-4"
+    />
+
+    <label className="block mb-2">
+      Password
+    </label>
+
+    <input
+      type="password"
+      placeholder="enter your password"
+      value={loginPassword}
+      onChange={(e) => setLoginPassword(e.target.value)}
+      className="w-full border p-2 rounded mb-6"
+    />
+
+    <button
+      type="submit"
+      className="w-full bg-blue-600 text-white p-2 rounded"
+    >
+      Login
+    </button>
+
+  </form>
+)}
+<div className="text-center mt-4">
+
+  {!showLogin ? (
+    <button
+      type="button"
+      onClick={() => setShowLogin(true)}
+      className="text-blue-600"
+    >
+      Already have an account? Login
+    </button>
+  ) : (
+    <button
+      type="button"
+      onClick={() => setShowLogin(false)}
+      className="text-blue-600"
+    >
+      Don't have an account? Register
+    </button>
+  )}
+
+</div>
+
+{isLoggedIn && showLogin && (
+  <div className="text-center mt-4">
+    <button
+      type="button"
+      onClick={handleLogout}
+      className="text-red-600"
+    >
+      Logout
+    </button>
+  </div>
+)}
 
       </div>
 
     </div>
   )
 }
+
 
 export default App
